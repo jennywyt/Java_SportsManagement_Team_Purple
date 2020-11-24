@@ -1,21 +1,21 @@
-
-import java.util.*;
-
-
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Event {
-    private double prizePool;
+
     private String name;
     private String status;
+    private double pricePool;
     private Date eventDate;
     private ArrayList<User> participants;
     private ArrayList<Integer> ratings;
     private int maximalParticipants;
 
-    public Event(double prizePool, String name, String status, Date eventDate, int maximalParticipants) {
-        this.prizePool = prizePool;
+    public Event( String name, String status,double pricePool, Date eventDate, int maximalParticipants) {
+
         this.name = name;
         this.status = status;
+        this.pricePool = pricePool;
         this.eventDate = eventDate;
         this.participants = new ArrayList<>();
         this.ratings = new ArrayList<>();
@@ -25,20 +25,20 @@ public class Event {
 
     public void addParticipant (User participant){
         if (participants.size()>=maximalParticipants) {
-            System.out.println("Max participants reached");
+            System.out.println("Max participants ");
         }
-        else {
-         participants.add(participant);
+        else{
+            participants.add(participant);
         }
     }
 
 
     public double getPrizePool() {
-        return prizePool;
+        return pricePool;
     }
 
-    public void setPrizePool(double prizePool) {
-        this.prizePool = prizePool;
+    public void setPricePool(double pricePool) {
+        this.pricePool = pricePool;
     }
 
     public String getName() {
@@ -89,14 +89,17 @@ public class Event {
         this.maximalParticipants = maximalParticipants;
     }
 
+
     @Override
     public String toString() {
-        return "Event{" +
-                "prizePool=" + prizePool +
-                ", name='" + name + '\'' +
-                ", status='" + status + '\'' +
-                ", eventDate=" + eventDate +
-                ", maximalParticipants=" + maximalParticipants +
-                '}';
+        return "Event :" +
+                "|name'" + name + '\'' +
+                "| status='" + status + '\'' +
+                "| pricePool=" + pricePool +
+                "| eventDate=" + eventDate +
+                "|participants=" + participants +
+                "|ratings=" + ratings +
+                "|maximalParticipants=" + maximalParticipants
+                ;
     }
 }
