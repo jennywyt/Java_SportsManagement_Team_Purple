@@ -27,8 +27,8 @@ public class Event {
         if (participants.size()>=maximalParticipants) {
             System.out.println("Max participants reached");
         }
-        else{
-            participants.add(participant);
+        else {
+         participants.add(participant);
         }
     }
 
