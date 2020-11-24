@@ -8,14 +8,16 @@ public class Event {
     private String name;
     private String status;
     private Date eventDate;
+    private EventCategories eventCategory;
     private ArrayList<User> participants;
     private ArrayList<Integer> ratings;
     private int maximalParticipants;
 
-    public Event(double prizePool, String name, String status, Date eventDate, int maximalParticipants) {
+    public Event(double prizePool, String name, String status, Date eventDate, int maximalParticipants, EventCategories eventCategory) {
         this.prizePool = prizePool;
         this.name = name;
         this.status = status;
+        this.eventCategory = eventCategory;
         this.eventDate = eventDate;
         this.participants = new ArrayList<>();
         this.ratings = new ArrayList<>();
@@ -32,6 +34,13 @@ public class Event {
         }
     }
 
+    public EventCategories getEventCategory() {
+        return eventCategory;
+    }
+
+    public void setEventCategory(EventCategories eventCategory) {
+        this.eventCategory = eventCategory;
+    }
 
     public double getPrizePool() {
         return prizePool;
@@ -96,6 +105,7 @@ public class Event {
                 ", name='" + name + '\'' +
                 ", status='" + status + '\'' +
                 ", eventDate=" + eventDate +
+                ", eventCategory=" + eventCategory +
                 ", maximalParticipants=" + maximalParticipants +
                 '}';
     }
