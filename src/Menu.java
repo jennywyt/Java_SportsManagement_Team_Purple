@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class Menu {
@@ -8,7 +9,7 @@ public class Menu {
         int userInput;
 
         do {
-            userInput = getUserInput(6,"your service");
+            userInput = getUserInput(6, "your service");
             switch (userInput) {
                 case 1:
                     displayAllEvents();
@@ -37,7 +38,7 @@ public class Menu {
         System.out.println("Which event you would like to watch?");
         String name = scanner.nextLine();
         System.out.println("How much you would like to put in the price pool?");
-        String pricePool = scanner.nextLine();
+        double pricePool = scanner.nextDouble();
         System.out.println("Event Type");
         for (int i = 0; i < EventCategories.values().length; i++) {
             EventCategories currentCategory = EventCategories.values()[i];
@@ -46,7 +47,8 @@ public class Menu {
 
         int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
         EventCategories eventCategory = EventCategories.values()[eventCategoryChoice];
-        Event event = new Event();
+        Event event = new Event(pricePool, name, "New", new Date(), 4);
+        System.out.println("Event was created.");
     }
 
     private static void displayAllPastEvents() {
