@@ -2,6 +2,8 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Menu {
+    static EventRepo eventRepo = new EventRepo();
+
     public static void main(String[] args) {
         printHeader();
         printMenu();
@@ -47,7 +49,8 @@ public class Menu {
 
         int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
         EventCategories eventCategory = EventCategories.values()[eventCategoryChoice];
-        Event event = new Event(pricePool, name, "New", new Date(), 4);
+        Event event = new Event(name, "New", pricePool, new Date(), 4);
+        eventRepo.saveEvent(event);
         System.out.println("Event was created.");
     }
 
@@ -66,6 +69,9 @@ public class Menu {
     }
 
     private static void displayAllEvents() {
+        for (Event anEvent : eventRepo.getAll()) {
+            System.out.println(anEvent.getName());
+        }
     }
 
     private static int getUserInput(int maxChoices, String choiceType) {
