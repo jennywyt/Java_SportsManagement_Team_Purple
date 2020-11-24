@@ -55,17 +55,33 @@ public class Menu {
     }
 
     private static void displayAllPastEvents() {
-
+        System.out.println("All Past Events");
+        for (Event anEvent : eventRepo.getPastEvents()) {
+            System.out.println(("    " + anEvent.getName()));
+        }
     }
 
 
     private static void displayAllUpComingEvents() {
+        System.out.println("All upcoming Events");
+        for (Event anEvent : eventRepo.getUpcomingEvents()) {
+
+            System.out.println(("    " + anEvent.getName()));
+        }
     }
 
     private static void displayAllEventsWithOpeningSpots() {
+        System.out.println("All Events with opening spots");
+        for (Event anEvent : eventRepo.getEventsWithOpenSpots()) {
+            System.out.println(("    " + anEvent.getName()));
+        }
     }
 
     private static void display5TopEvents() {
+        System.out.println("Top 5 events");
+        for (Event anEvent : eventRepo.getFiveTopRatedEvents()) {
+            System.out.println("    " + anEvent.getName());
+        }
     }
 
     private static void displayAllEvents() {
