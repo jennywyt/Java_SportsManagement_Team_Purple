@@ -69,8 +69,9 @@ public class Menu {
     }
 
     private static void displayAllEvents() {
+        System.out.println("All events:");
         for (Event anEvent : eventRepo.getAll()) {
-            System.out.println(anEvent.getName());
+            System.out.println("    " + anEvent.getName());
         }
     }
 
