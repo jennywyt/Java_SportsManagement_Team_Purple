@@ -1,63 +1,56 @@
-
-import java.util.*;
 public class User {
 
+    private  int user_ID;
+    private String userFirstname;
+    private String userLastname;
+    private String userEmail;
+    private static int counter = 1;
 
-    private String username;
-    private String lastname;
-    private String Email;
-    private ArrayList<Event> listOfEvents;
-
-    public User(String username, String lastname, String email) {
-        this.username = username;
-        this.lastname = lastname;
-        Email = email;
-        listOfEvents=new ArrayList<>();
-
+    public User(String userFirstname,String userLastname,String userEmail){
+        this.user_ID = counter++;
+        this.userFirstname = userFirstname;
+        this.userLastname = userLastname;
+        this.userEmail = userEmail;
     }
 
-    public void addEvent(Event event){
-        listOfEvents.add(event);
+    public int getUser_ID() {
+        return user_ID;
     }
 
-    public ArrayList<Event> getListOfEvents() {
-        return listOfEvents;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setListOfEvents(ArrayList<Event> listOfEvents) {
-        this.listOfEvents = listOfEvents;
+    public String getUserFirstname() {
+        return userFirstname;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserLastname() {
+        return userLastname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser_ID(int user_ID) {
+        this.user_ID = user_ID;
     }
 
-    public String getLastname() {
-        return lastname;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setUserFirstname(String userFirstname) {
+        this.userFirstname = userFirstname;
     }
 
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
+    public void setUserLastname(String userLastname) {
+        this.userLastname = userLastname;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", Email='" + Email + '\'' +
-                '}';
+        return "User" +
+                "user_ID=" + user_ID +
+                ", userFirstname='" + userFirstname + '\'' +
+                ", userLastname='" + userLastname + '\'' +
+                ", userEmail='" + userEmail ;
     }
 }
