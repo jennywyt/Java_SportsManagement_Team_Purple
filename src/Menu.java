@@ -6,11 +6,11 @@ public class Menu {
 
     public static void main(String[] args) {
         printHeader();
-        printMenu();
 
         int userInput;
 
         do {
+            printMenu();
             userInput = getUserInput(6, "your service");
             switch (userInput) {
                 case 1:
