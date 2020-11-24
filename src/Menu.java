@@ -11,7 +11,7 @@ public class Menu {
 
         do {
             printMenu();
-            userInput = getUserInput(6, "your service");
+            userInput = getUserInput(7, "your service");
             switch (userInput) {
                 case 1:
                     displayAllEvents();
@@ -31,8 +31,22 @@ public class Menu {
                 case 6:
                     enterNewEvents();
                     break;
+                case 7:
+                    createANewUser();
+                    break;
             }
         } while (userInput != 0);
+    }
+
+    private static void createANewUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter your first name ");
+        String name = scanner.nextLine();
+        System.out.println("Please enter your last name");
+        String lastName = scanner.nextLine();
+        System.out.println("Please enter your email address");
+        String email = scanner.nextLine();
+        System.out.println("New User registered ");
     }
 
     private static void enterNewEvents() {
@@ -121,6 +135,7 @@ public class Menu {
         System.out.println("4: Display all upcoming events");
         System.out.println("5: Display all past events");
         System.out.println("6: Enter new event");
+        System.out.println("7: New user registration");
 
     }
 }
