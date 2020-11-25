@@ -8,18 +8,18 @@ public class Event {
     private double prizePool;
     private String name;
     private String status;
-    private Date eventDate;
+    private String eventDate;
 
-//  private SimpleDateFormat eventDate = new SimpleDateFormat("dd/MM/yyyy");
+//  private SimpleDateFormat eventDate = new SimpleDateFormat("dd/MM/yyyy"); ???
 
     private EventCategories eventCategory;
     private ArrayList<User> participants;
     private ArrayList<Integer> ratings;
     private int maximalParticipants;
 //  private int ticketPrice;
-//  private ArrayList<User> ticketBuyers;   VISITORS
+//  private ArrayList<User> ticketBuyers;   VISITORS, thats bonus task
 
-    public Event(double prizePool, String name, String status, Date eventDate, int maximalParticipants, EventCategories eventCategory) {
+    public Event(double prizePool, String name, String status, String eventDate, int maximalParticipants, EventCategories eventCategory) {
         this.prizePool = prizePool;
         this.name = name;
         this.status = status;
@@ -72,11 +72,11 @@ public class Event {
         this.status = status;
     }
 
-    public Date getEventDate() {
+    public String getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Date eventDate) {
+    public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
     }
 

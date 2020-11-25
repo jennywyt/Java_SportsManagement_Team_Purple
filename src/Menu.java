@@ -42,13 +42,13 @@ public class Menu {
 
     private static void createANewUser() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your first name ");
+        System.out.println("Please enter the first name ");
         String name = scanner.nextLine();
-        System.out.println("Please enter your last name");
+        System.out.println("Please enter the last name");
         String lastName = scanner.nextLine();
-        System.out.println("Please enter your email address");
+        System.out.println("Please enter the email address");
         String email = scanner.nextLine();
-        System.out.println("New User registered ");
+        System.out.println("New participant registered ");
     }
 
     private static void enterNewEvents() {
@@ -58,7 +58,7 @@ public class Menu {
         System.out.println("Write the status of the event you would like to watch?");
         String status = scanner.nextLine();
         System.out.println("Write the date and time of the event dd-mm-yyyy");
-        Date eventDate = scanner.next();
+        String eventDate = scanner.nextLine();
 
 
         System.out.println("Display prize pool for specific existing event");
