@@ -1,9 +1,8 @@
-import java.util.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Menu {
+
     static EventRepo eventRepo = new EventRepo();
 
     public static void main(String[] args) {
@@ -13,7 +12,7 @@ public class Menu {
 
         do {
             printMenu();
-            userInput = getUserInput(7, "your service");
+            userInput = getUserInput(8, "your service");
             switch (userInput) {
                 case 1:
                     displayAllEvents();
@@ -36,8 +35,20 @@ public class Menu {
                 case 7:
                     createANewUser();
                     break;
+                case 8:
+                    addParticipant();
+                    break;
+
             }
         } while (userInput != 0);
+    }
+
+    private static void addParticipant() {
+        System.out.println("Event Type");
+        for (int i = 0; i < EventCategories.values().length; i++) {
+            EventCategories currentCategory = EventCategories.values()[i];
+            System.out.println((i + 1) + ": " + currentCategory);
+        }
     }
 
     private static void createANewUser() {
@@ -59,7 +70,6 @@ public class Menu {
         String status = scanner.nextLine();
         System.out.println("Write the date and time of the event dd-mm-yyyy");
         String eventDate = scanner.nextLine();
-
 
         System.out.println("Display prize pool for specific existing event");
         double prizePool = scanner.nextDouble();
@@ -147,4 +157,5 @@ public class Menu {
         System.out.println("6: Enter new event");
         System.out.println("7: New user registration");
     }
+
 }
