@@ -64,21 +64,21 @@ public class Menu {
 
     private static void enterNewEvents() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Which event you would like to watch?");
+        System.out.println("Which event you would like to add?");
         String name = scanner.nextLine();
-        System.out.println("Write the status of the event you would like to watch?");
+        System.out.println("Write the status of the event you would like to add?");
         String status = scanner.nextLine();
         System.out.println("Write the date and time of the event dd-mm-yyyy");
         String eventDate = scanner.nextLine();
 
-        System.out.println("Display prize pool for specific existing event");
+        System.out.println("Display prize pool for the event");
         double prizePool = scanner.nextDouble();
+
         System.out.println("Event Type");
         for (int i = 0; i < EventCategories.values().length; i++) {
             EventCategories currentCategory = EventCategories.values()[i];
             System.out.println((i + 1) + ": " + currentCategory);
         }
-
         int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
         EventCategories eventCategory = EventCategories.values()[eventCategoryChoice];
         Event event = new Event(prizePool, name, status, eventDate, 10, eventCategory);
@@ -130,7 +130,7 @@ public class Menu {
         int choice = -1;
         while (choice < 0 || choice > maxChoices) {
             try {
-                System.out.println("Please select " + choiceType + ". ");
+                System.out.println("Please select " + choiceType + ": ");
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Input can only be number. ");
@@ -155,7 +155,7 @@ public class Menu {
         System.out.println("4: Display all upcoming events");
         System.out.println("5: Display all past events");
         System.out.println("6: Enter new event");
-        System.out.println("7: New user registration");
+        System.out.println("7: New participant registration");
     }
 
 }
