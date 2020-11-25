@@ -1,3 +1,5 @@
+import java.util.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -53,8 +55,14 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which event you would like to watch?");
         String name = scanner.nextLine();
-        System.out.println("How much you would like to put in the price pool?");
-        double pricePool = scanner.nextDouble();
+        System.out.println("Write the status of the event you would like to watch?");
+        String status = scanner.nextLine();
+        System.out.println("Write the date and time of the event dd-mm-yyyy");
+        Date eventDate = scanner.next();
+
+
+        System.out.println("Display prize pool for specific existing event");
+        double prizePool = scanner.nextDouble();
         System.out.println("Event Type");
         for (int i = 0; i < EventCategories.values().length; i++) {
             EventCategories currentCategory = EventCategories.values()[i];
@@ -63,9 +71,11 @@ public class Menu {
 
         int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
         EventCategories eventCategory = EventCategories.values()[eventCategoryChoice];
-        Event event = new Event(name, "New", pricePool, new Date(), 4);
+        Event event = new Event(prizePool, name, status, eventDate, 10, eventCategory);
         eventRepo.saveEvent(event);
         System.out.println("Event was created.");
+
+        //(name, "New", pricePool, new Date(), 4)
     }
 
     private static void displayAllPastEvents() {
@@ -136,6 +146,5 @@ public class Menu {
         System.out.println("5: Display all past events");
         System.out.println("6: Enter new event");
         System.out.println("7: New user registration");
-
     }
 }

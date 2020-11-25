@@ -1,6 +1,7 @@
 
 import java.util.*;
 
+import java.text.SimpleDateFormat;
 
 
 public class Event {
@@ -8,10 +9,15 @@ public class Event {
     private String name;
     private String status;
     private Date eventDate;
+
+//  private SimpleDateFormat eventDate = new SimpleDateFormat("dd/MM/yyyy");
+
     private EventCategories eventCategory;
     private ArrayList<User> participants;
     private ArrayList<Integer> ratings;
     private int maximalParticipants;
+//  private int ticketPrice;
+//  private ArrayList<User> ticketBuyers;   VISITORS
 
     public Event(double prizePool, String name, String status, Date eventDate, int maximalParticipants, EventCategories eventCategory) {
         this.prizePool = prizePool;
