@@ -1,5 +1,8 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -9,6 +12,7 @@ public class Menu {
     static UserRepo userRepo = new UserRepo();
 
     public static void main(String[] args) {
+        addTestData();
         printHeader();
 
         int userInput;
@@ -46,6 +50,14 @@ public class Menu {
         } while (userInput != 0);
     }
 
+    private static void addTestData() {
+        userRepo.saveUser(new User("Simon", "Sagen", "email@emai.com"));
+        userRepo.saveUser(new User("Uncle", "Roger", "eggfriedrice@gmail.com"));
+        eventRepo.saveEvent(new Event(PrizePool.$100, "Tennis game", Status.Upcoming,
+                Date.from(ZonedDateTime.of(2020, 11, 27, 8, 0, 0, 0, ZoneId.systemDefault()).toInstant()),
+                Participants.fiveOn5, EventCategories.basketball));
+    }
+
     private static void addParticipant() {
         System.out.println("Event Type");
         for (int i = 0; i < EventCategories.values().length; i++) {
@@ -63,7 +75,7 @@ public class Menu {
         System.out.println("Please enter the email address");
         String email = scanner.nextLine();
         System.out.println("New participant registered ");
-        User user = new User(name, lastName , email);
+        User user = new User(name, lastName, email);
         userRepo.saveUser(user);
     }
 
