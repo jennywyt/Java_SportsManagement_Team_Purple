@@ -41,10 +41,20 @@ public class EventRepo {
     }
 
     ArrayList<Event> getUpcomingEvents() {
-        return listOfEvent;
+        Date now = new Date();
+
+        ArrayList<Event> upcomingEvents = new ArrayList<>();
+        for (Event event : getAll()){
+            if (event.getEventDate().compareTo(now) > 0) {
+                upcomingEvents.add(event);
+            }
+        }
+
+        return upcomingEvents;
     }
 
     ArrayList<Event> getEventsWithOpenSpots() {
+
         return listOfEvent;
     }
 
