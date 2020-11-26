@@ -1,3 +1,5 @@
+import com.sun.xml.internal.ws.wsdl.writer.document.Part;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -100,8 +102,15 @@ public class Menu {
         int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
         EventCategories eventCategory = EventCategories.values()[eventCategoryChoice - 1];
 
+        System.out.println("Event Max Participant");
+        for (int i = 0; i < Participants.values().length; i++) {
+            Participants currentParticipants = Participants.values()[i];
+            System.out.println((i + 1) + ": " + currentParticipants);
+        }
+        int ParticipantsChoices = getUserInput(Participants.values().length, "max participants");
+        Participants participants = Participants.values()[ParticipantsChoices - 1];
 
-        Event event = new Event(prizePool, name, eventStatus, date, 10, eventCategory);
+        Event event = new Event(prizePool, name, eventStatus, date, participants, eventCategory);
         eventRepo.saveEvent(event);
         System.out.println("Event was created.");
     }

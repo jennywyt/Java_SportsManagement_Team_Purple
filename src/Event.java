@@ -15,11 +15,11 @@ public class Event {
     private EventCategories eventCategory;
     private ArrayList<User> participants;
     private ArrayList<Integer> ratings;
-    private int maximalParticipants;
+    private Participants maximalParticipants;
 //  private int ticketPrice;
 //  private ArrayList<User> ticketBuyers;   VISITORS, thats bonus task
 
-    public Event(double prizePool, String name, Status status, Date eventDate, int maximalParticipants, EventCategories eventCategory) {
+    public Event(double prizePool, String name, Status status, Date eventDate, Participants maximalParticipants, EventCategories eventCategory) {
         this.prizePool = prizePool;
         this.name = name;
         this.status= status;
@@ -32,7 +32,7 @@ public class Event {
 
 
     public void addParticipant (User participant){
-        if (participants.size()>=maximalParticipants) {
+        if (participants.size()>=maximalParticipants.getMaxParticipants()) {
             System.out.println("Max participants reached");
         }
         else{
@@ -96,11 +96,11 @@ public class Event {
         this.ratings = ratings;
     }
 
-    public int getMaximalParticipants() {
+    public Participants getMaximalParticipants() {
         return maximalParticipants;
     }
 
-    public void setMaximalParticipants(int maximalParticipants) {
+    public void setMaximalParticipants(Participants maximalParticipants) {
         this.maximalParticipants = maximalParticipants;
     }
 
