@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Menu {
 
     static EventRepo eventRepo = new EventRepo();
+    static UserRepo userRepo = new UserRepo();
 
     public static void main(String[] args) {
         printHeader();
@@ -62,6 +63,8 @@ public class Menu {
         System.out.println("Please enter the email address");
         String email = scanner.nextLine();
         System.out.println("New participant registered ");
+        User user = new User(name, lastName , email);
+        userRepo.saveUser(user);
     }
 
     private static void enterNewEvents() {
