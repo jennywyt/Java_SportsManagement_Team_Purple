@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.wsdl.writer.document.Part;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -91,8 +89,13 @@ public class Menu {
             return;
         }
 
-        System.out.println("Display prize pool for the event");
-        double prizePool = scanner.nextDouble();
+        System.out.println("Prize Pool");
+        for (int i = 0; i < PrizePool.values().length; i++) {
+            PrizePool currentPrizePool = PrizePool.values()[i];
+            System.out.println((i + 1) + ": " + currentPrizePool);
+        }
+        int PrizePoolChoice = getUserInput(PrizePool.values().length, "a prize pool");
+        PrizePool prizePool = PrizePool.values()[PrizePoolChoice - 1];
 
         System.out.println("Event Type");
         for (int i = 0; i < EventCategories.values().length; i++) {
@@ -148,7 +151,7 @@ public class Menu {
     private static void displayAllEvents() {
         System.out.println("All events:");
         for (Event anEvent : eventRepo.getAll()) {
-            System.out.println("    " + anEvent.getName() + " | " + anEvent.getEventDate() + " | " + anEvent.getPrizePool());
+            System.out.println("    " + anEvent.getName() + " | " + anEvent.getEventDate() + " | " + anEvent.getPrizePool() + " | " + anEvent.getMaximalParticipants());
         }
     }
 

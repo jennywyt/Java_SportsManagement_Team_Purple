@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 
 public class Event {
-    private double prizePool;
+    private PrizePool prizePool;
     private String name;
     private Status status;
     private Date eventDate;
@@ -19,7 +19,7 @@ public class Event {
 //  private int ticketPrice;
 //  private ArrayList<User> ticketBuyers;   VISITORS, thats bonus task
 
-    public Event(double prizePool, String name, Status status, Date eventDate, Participants maximalParticipants, EventCategories eventCategory) {
+    public Event(PrizePool prizePool, String name, Status status, Date eventDate, Participants maximalParticipants, EventCategories eventCategory) {
         this.prizePool = prizePool;
         this.name = name;
         this.status= status;
@@ -48,11 +48,11 @@ public class Event {
         this.eventCategory = eventCategory;
     }
 
-    public double getPrizePool() {
+    public PrizePool getPrizePool() {
         return prizePool;
     }
 
-    public void setPrizePool(double prizePool) {
+    public void setPrizePool(PrizePool prizePool) {
         this.prizePool = prizePool;
     }
 
