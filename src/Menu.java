@@ -19,7 +19,7 @@ public class Menu {
 
         do {
             printMenu();
-            userInput = getUserInput(8, "your service");
+            userInput = getUserInput(9, "your service");
             switch (userInput) {
                 case 1:
                     displayAllEvents();
