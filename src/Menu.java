@@ -1,3 +1,5 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -70,20 +72,27 @@ public class Menu {
         String status = scanner.nextLine();
         System.out.println("Write the date and time of the event dd-mm-yyyy");
         String eventDate = scanner.nextLine();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        try {
+            Date date = simpleDateFormat.parse(eventDate);
 
-        System.out.println("Display prize pool for the event");
-        double prizePool = scanner.nextDouble();
 
-        System.out.println("Event Type");
-        for (int i = 0; i < EventCategories.values().length; i++) {
-            EventCategories currentCategory = EventCategories.values()[i];
-            System.out.println((i + 1) + ": " + currentCategory);
+            System.out.println("Display prize pool for the event");
+            double prizePool = scanner.nextDouble();
+
+            System.out.println("Event Type");
+            for (int i = 0; i < EventCategories.values().length; i++) {
+                EventCategories currentCategory = EventCategories.values()[i];
+                System.out.println((i + 1) + ": " + currentCategory);
+            }
+            int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
+            EventCategories eventCategory = EventCategories.values()[eventCategoryChoice];
+            Event event = new Event(prizePool, name, status, date, 10, eventCategory);
+            eventRepo.saveEvent(event);
+            System.out.println("Event was created.");
+        } catch (ParseException e){
+            System.err.println("Invaild Date format!");
         }
-        int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
-        EventCategories eventCategory = EventCategories.values()[eventCategoryChoice];
-        Event event = new Event(prizePool, name, status, eventDate, 10, eventCategory);
-        eventRepo.saveEvent(event);
-        System.out.println("Event was created.");
 
         //(name, "New", pricePool, new Date(), 4)
     }
