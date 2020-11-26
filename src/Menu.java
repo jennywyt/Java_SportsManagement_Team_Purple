@@ -46,6 +46,9 @@ public class Menu {
                     addParticipant();
                     break;
 
+                case 9:
+                    showParticipantsOfEvent();
+                    break;
             }
         } while (userInput != 0);
     }
@@ -68,13 +71,13 @@ public class Menu {
         int userChoice = getUserInput(allUsers.size(), "a user");
         User participant = allUsers.get(userChoice - 1);
 
-        System.out.println("Select User");
+        System.out.println("Select Event");
         ArrayList<Event> allEvent = eventRepo.getAll();
         for (int i = 0; i < allEvent.size(); i++) {
             Event currentEvent = allEvent.get(i);
             System.out.println((i + 1) + ": " + currentEvent.getName());
         }
-        int eventChoice = getUserInput(allUsers.size(), "a user");
+        int eventChoice = getUserInput(allEvent.size(), "a user");
         Event event = allEvent.get(eventChoice - 1);
 
         event.addParticipant(participant);
@@ -184,6 +187,21 @@ public class Menu {
         }
     }
 
+    private static void showParticipantsOfEvent() {
+        System.out.println("Select Event");
+        ArrayList<Event> allEvent = eventRepo.getAll();
+        for (int i = 0; i < allEvent.size(); i++) {
+            Event currentEvent = allEvent.get(i);
+            System.out.println((i + 1) + ": " + currentEvent.getName());
+        }
+        int eventChoice = getUserInput(allEvent.size(), "a user");
+        Event event = allEvent.get(eventChoice - 1);
+
+        for (User participant : event.getParticipants()) {
+            System.out.println(participant.getUserFirstname() + " " + participant.getUserLastname());
+        }
+    }
+
     private static int getUserInput(int maxChoices, String choiceType) {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
@@ -214,7 +232,9 @@ public class Menu {
         System.out.println("4: Display all upcoming events");
         System.out.println("5: Display all past events");
         System.out.println("6: Enter new event");
-        System.out.println("7: New participant registration");
+        System.out.println("7: User registration");
+        System.out.println("8: Add User to event");
+        System.out.println("9: Show participants of event");
     }
 
 }
