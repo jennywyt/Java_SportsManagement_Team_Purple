@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 public class Event {
     private double prizePool;
     private String name;
-    private String status;
+    private Status status;
     private Date eventDate;
 
 //  private SimpleDateFormat eventDate = new SimpleDateFormat("dd/MM/yyyy"); ???
@@ -19,10 +19,10 @@ public class Event {
 //  private int ticketPrice;
 //  private ArrayList<User> ticketBuyers;   VISITORS, thats bonus task
 
-    public Event(double prizePool, String name, String status, Date eventDate, int maximalParticipants, EventCategories eventCategory) {
+    public Event(double prizePool, String name, Status status, Date eventDate, int maximalParticipants, EventCategories eventCategory) {
         this.prizePool = prizePool;
         this.name = name;
-        this.status = status;
+        this.status= status;
         this.eventCategory = eventCategory;
         this.eventDate = eventDate;
         this.participants = new ArrayList<>();
@@ -64,11 +64,11 @@ public class Event {
         this.name = name;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

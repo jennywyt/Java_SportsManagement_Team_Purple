@@ -68,33 +68,42 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which event you would like to add?");
         String name = scanner.nextLine();
-        System.out.println("Write the status of the event you would like to add?");
-        String status = scanner.nextLine();
+
+        System.out.println("Event Status");
+        for (int i = 0; i < Status.values().length; i++) {
+            Status currentStatus = Status.values()[i];
+            System.out.println((i + 1) + ": " + currentStatus);
+        }
+        int statusChoice = getUserInput(Status.values().length, "an event status");
+        Status eventStatus = Status.values()[statusChoice - 1];
+
         System.out.println("Write the date and time of the event dd-mm-yyyy hh:mm");
         String eventDate = scanner.nextLine();
+
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Date date;
         try {
-            Date date = simpleDateFormat.parse(eventDate);
-
-
-            System.out.println("Display prize pool for the event");
-            double prizePool = scanner.nextDouble();
-
-            System.out.println("Event Type");
-            for (int i = 0; i < EventCategories.values().length; i++) {
-                EventCategories currentCategory = EventCategories.values()[i];
-                System.out.println((i + 1) + ": " + currentCategory);
-            }
-            int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
-            EventCategories eventCategory = EventCategories.values()[eventCategoryChoice];
-            Event event = new Event(prizePool, name, status, date, 10, eventCategory);
-            eventRepo.saveEvent(event);
-            System.out.println("Event was created.");
-        } catch (ParseException e){
+            date = simpleDateFormat.parse(eventDate);
+        } catch (ParseException e) {
             System.err.println("Invaild Date format!");
+            return;
         }
 
-        //(name, "New", pricePool, new Date(), 4)
+        System.out.println("Display prize pool for the event");
+        double prizePool = scanner.nextDouble();
+
+        System.out.println("Event Type");
+        for (int i = 0; i < EventCategories.values().length; i++) {
+            EventCategories currentCategory = EventCategories.values()[i];
+            System.out.println((i + 1) + ": " + currentCategory);
+        }
+        int eventCategoryChoice = getUserInput(EventCategories.values().length, "an event category");
+        EventCategories eventCategory = EventCategories.values()[eventCategoryChoice - 1];
+
+
+        Event event = new Event(prizePool, name, eventStatus, date, 10, eventCategory);
+        eventRepo.saveEvent(event);
+        System.out.println("Event was created.");
     }
 
     private static void displayAllPastEvents() {
