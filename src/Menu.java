@@ -70,9 +70,9 @@ public class Menu {
         String name = scanner.nextLine();
         System.out.println("Write the status of the event you would like to add?");
         String status = scanner.nextLine();
-        System.out.println("Write the date and time of the event dd-mm-yyyy");
+        System.out.println("Write the date and time of the event dd-mm-yyyy hh:mm");
         String eventDate = scanner.nextLine();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         try {
             Date date = simpleDateFormat.parse(eventDate);
 
