@@ -1,7 +1,6 @@
 
-import java.util.*;
-
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Event {
@@ -9,8 +8,6 @@ public class Event {
     private String name;
     private Status status;
     private Date eventDate;
-
-//  private SimpleDateFormat eventDate = new SimpleDateFormat("dd/MM/yyyy"); ???
 
     private EventCategories eventCategory;
     private ArrayList<User> participants;
@@ -22,7 +19,7 @@ public class Event {
     public Event(PrizePool prizePool, String name, Status status, Date eventDate, Participants maximalParticipants, EventCategories eventCategory) {
         this.prizePool = prizePool;
         this.name = name;
-        this.status= status;
+        this.status = status;
         this.eventCategory = eventCategory;
         this.eventDate = eventDate;
         this.participants = new ArrayList<>();
@@ -31,11 +28,10 @@ public class Event {
     }
 
 
-    public void addParticipant (User participant){
-        if (participants.size()>=maximalParticipants.getMaxParticipants()) {
+    public void addParticipant(User participant) {
+        if (participants.size() >= maximalParticipants.getMaxParticipants()) {
             System.out.println("Max participants reached");
-        }
-        else{
+        } else {
             participants.add(participant);
         }
     }
@@ -115,4 +111,9 @@ public class Event {
                 ", maximalParticipants=" + maximalParticipants +
                 '}';
     }
+
+    public boolean hasOpenSpots() {
+        return getParticipants().size() < getMaximalParticipants().getMaxParticipants();
+    }
+
 }

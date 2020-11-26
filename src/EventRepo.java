@@ -44,7 +44,7 @@ public class EventRepo {
         Date now = new Date();
 
         ArrayList<Event> upcomingEvents = new ArrayList<>();
-        for (Event event : getAll()){
+        for (Event event : getAll()) {
             if (event.getEventDate().compareTo(now) > 0) {
                 upcomingEvents.add(event);
             }
@@ -54,8 +54,14 @@ public class EventRepo {
     }
 
     ArrayList<Event> getEventsWithOpenSpots() {
+        ArrayList<Event> eventsWithOpenSpots = new ArrayList<>();
+        for (Event event : getAll()) {
+            if (event.hasOpenSpots()) {
+                eventsWithOpenSpots.add(event);
+            }
+        }
 
-        return listOfEvent;
+        return eventsWithOpenSpots;
     }
 
 }
