@@ -59,11 +59,25 @@ public class Menu {
     }
 
     private static void addParticipant() {
-        System.out.println("Event Type");
-        for (int i = 0; i < EventCategories.values().length; i++) {
-            EventCategories currentCategory = EventCategories.values()[i];
-            System.out.println((i + 1) + ": " + currentCategory);
+        System.out.println("Select User");
+        ArrayList<User> allUsers = userRepo.getAll();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User currentUser = allUsers.get(i);
+            System.out.println((i + 1) + ": " + currentUser.getUserFirstname() + " " + currentUser.getUserLastname());
         }
+        int userChoice = getUserInput(allUsers.size(), "a user");
+        User participant = allUsers.get(userChoice - 1);
+
+        System.out.println("Select User");
+        ArrayList<Event> allEvent = eventRepo.getAll();
+        for (int i = 0; i < allEvent.size(); i++) {
+            Event currentEvent = allEvent.get(i);
+            System.out.println((i + 1) + ": " + currentEvent.getName());
+        }
+        int eventChoice = getUserInput(allUsers.size(), "a user");
+        Event event = allEvent.get(eventChoice - 1);
+
+        event.addParticipant(participant);
     }
 
     private static void createANewUser() {
